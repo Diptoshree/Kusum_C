@@ -242,7 +242,7 @@ def run_allocation(combined_df):
     iteration = 1
     while True:
         # Stop if cumulative limits reached
-        if cumulative_alloted_capacity > 50 or cumulative_new_ncfa > 100:
+        if cumulative_alloted_capacity > 200 or cumulative_new_ncfa > 100:
             break
 
         # STEP 1: Filter eligible rows
