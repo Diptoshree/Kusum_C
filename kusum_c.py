@@ -327,13 +327,13 @@ def run_allocation_process(combined_df):
     df_result_full = pd.DataFrame()
 
     iteration = 1
-    while cumulative_alloted_capacity < 1000 and cumulative_new_ncfa < 500:
+    while cumulative_alloted_capacity < 10000 and cumulative_new_ncfa < 2000:
         df1, df2, df_result, lottery_required = allocation_once(combined_df)
 
         # 🚨 Pre-check if adding this allocation will breach thresholds
         next_alloted = cumulative_alloted_capacity + df_result['alloted_capacity'].sum()
         next_ncfa = cumulative_new_ncfa + df_result['new_ncfa'].sum()
-        if next_alloted > 1000 or next_ncfa > 500:
+        if next_alloted > 10000 or next_ncfa > 2000:
             # Mark iteration as skipped
             df1['remarks'] = "Not Considered for Allocation (Threshold Exceeded)"
             df2['remarks'] = "Not Considered for Allocation (Threshold Exceeded)"
